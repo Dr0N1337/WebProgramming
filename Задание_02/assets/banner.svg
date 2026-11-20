@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" role="img" aria-label="Абстрактный геометрический баннер">
-  <rect width="520" height="300" fill="#edf3f7"/>
-  <path d="M0 230 125 90l120 140 115-170 160 170v70H0Z" fill="#4c83ad"/>
-  <circle cx="405" cy="70" r="36" fill="#e7a64a"/>
-  <path d="M0 260h520v40H0z" fill="#263d54"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 72" role="img" aria-label="Геометрический пейзаж">
+  <rect width="740" height="72" fill="#edf3f7"/>
+  <circle cx="605" cy="26" r="15" fill="#e7a64a"/>
+  <path d="M0 65 175 22l145 39 150-46 270 55v2H0Z" fill="#4c83ad"/>
+  <path d="M0 67 238 48l132 20 158-17 212 14v7H0Z" fill="#263d54"/>
 </svg>
