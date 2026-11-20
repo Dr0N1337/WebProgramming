@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Выбор файла · Vue.js</title>
+</head>
+<body>
+  <main id="app">
+    <h1>Имя локального файла</h1>
+    <label for="file">Выберите файл</label>
+    <input id="file" type="file"
+      v-on:click="clearFileSelection($event)"
+      v-on:change="showFileName($event)"
+      v-on:cancel="showFileName($event)">
+    <p role="status">{{ fileName }}</p>
+  </main>
+  <script src="vendor/vue.global.prod.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return { fileName: "Файл не выбран" };
+      },
+      methods: {
+        clearFileSelection(event) {
+          event.target.value = "";
+          this.showFileName(event);
+        },
+        showFileName(event) {
+          this.fileName = event.target.files[0]?.name ?? "Файл не выбран";
+        }
+      }
+    }).mount("#app");
+  </script>
+</body>
+</html>

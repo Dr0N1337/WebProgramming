@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Объединение ячеек · Vue.js</title>
+</head>
+<body>
+  <main id="app">
+    <h1>Объединение ячеек</h1>
+    <table border="1" cellpadding="12">
+      <caption>Таблица из трёх строк и трёх столбцов</caption>
+      <tbody>
+        <tr>
+          <td v-bind:colspan="horizontalSpan">Объединено по горизонтали: {{ horizontalSpan }}</td>
+          <td>Строка 1, столбец 3</td>
+        </tr>
+        <tr>
+          <td>Строка 2, столбец 1</td>
+          <td>Строка 2, столбец 2</td>
+          <td v-bind:rowspan="verticalSpan">Объединено по вертикали: {{ verticalSpan }}</td>
+        </tr>
+        <tr>
+          <td>Строка 3, столбец 1</td>
+          <td>Строка 3, столбец 2</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <script src="vendor/vue.global.prod.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return { horizontalSpan: 2, verticalSpan: 2 };
+      }
+    }).mount("#app");
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Переключение шаблонов · Vue.js</title>
+</head>
+<body>
+  <main id="app">
+    <h1>Карточка сотрудника</h1>
+    <div aria-live="polite" aria-atomic="true">
+      <p>Шаг {{ step + 1 }} из {{ lastStep + 1 }}</p>
+      <template v-if="step === 0"><h2>Ф.И.О.</h2></template>
+      <template v-else-if="step === 1"><h2>Серия паспорта</h2></template>
+      <template v-else-if="step === 2"><h2>Номер паспорта</h2></template>
+      <template v-else-if="step === 3"><h2>Должность</h2></template>
+      <template v-else><h2>Доля ставки</h2></template>
+    </div>
+    <button type="button" v-on:click="next" v-bind:disabled="!forward">Вперёд</button>
+    <button type="button" v-on:click="previous" v-bind:disabled="forward">Назад</button>
+  </main>
+  <script src="vendor/vue.global.prod.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return { step: 0, lastStep: 4, forward: true };
+      },
+      methods: {
+        next() {
+          this.step += 1;
+          this.forward = this.step < this.lastStep;
+        },
+        previous() {
+          this.step -= 1;
+          this.forward = this.step === 0;
+        }
+      }
+    }).mount("#app");
+  </script>
+</body>
+</html>

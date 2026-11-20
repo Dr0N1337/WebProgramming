@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Выбор цвета текста · Vue.js</title>
+</head>
+<body>
+  <main id="app">
+    <h1>Цвет текста по названию</h1>
+    <p>
+      <label for="color">Цвет</label>
+      <input id="color" v-model="colorName" aria-describedby="colors" type="text">
+    </p>
+    <p id="colors">Красный, оранжевый, жёлтый, зелёный, голубой, синий, фиолетовый.</p>
+    <p>
+      <label for="message">Текст абзаца</label>
+      <input id="message" v-model="message" type="text">
+    </p>
+    <p style="text-align: right; font-family: 'Comic Sans MS', cursive; font-size: 18pt; font-weight: bold; background: #242424; padding: 0.5em"
+       v-bind:style="{ color: previewColor }">{{ message }}</p>
+  </main>
+  <script src="vendor/vue.global.prod.js"></script>
+  <script>
+    const colors = new Map([
+      ["красный", "#ff5252"],
+      ["оранжевый", "orange"],
+      ["желтый", "yellow"],
+      ["зеленый", "lime"],
+      ["голубой", "lightskyblue"],
+      ["синий", "#6d9cff"],
+      ["фиолетовый", "violet"]
+    ]);
+
+    Vue.createApp({
+      data() {
+        return { colorName: "голубой", message: "Пример окрашиваемого текста" };
+      },
+      computed: {
+        previewColor() {
+          const normalized = this.colorName.trim().toLowerCase().replaceAll("ё", "е");
+          return colors.get(normalized) ?? "white";
+        }
+      }
+    }).mount("#app");
+  </script>
+</body>
+</html>
